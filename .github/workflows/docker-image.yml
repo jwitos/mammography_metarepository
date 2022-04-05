@@ -1,0 +1,18 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run GMIC sample
+      run: bash run.sh nyu_gmic experiment01 sample_data/images/ sample_data/preprocessed_images/ sample_data/data.pkl predictions/ gpu 0 no_bootstrap
